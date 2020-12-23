@@ -1,0 +1,60 @@
+
+
+<div id="fullscreen_bg" class="fullscreen_bg">
+
+  <div class="container">
+    
+  
+    <form class="form-signin" [formGroup]="loginForm" (ngSubmit)="login()">
+      <h1 class="form-signin-heading text-muted">Sign In</h1>
+      
+      <div class="col">
+        <div class="form-group clearfix" [ngClass]="{ 'has-error': f.userid.touched || f.userid.errors }"> 
+        <!-- <label for="mailid">Email</label> -->
+  
+      <input
+       id="mailid" type="email"
+       class="form-control"
+       placeholder="Email address"
+       formControlName="userid"
+       required>
+       <div *ngIf="((f.userid.touched || f.userid.dirty) &&
+       f.userid.errors)">    
+      <div class="msg" *ngIf="f.userid.errors.required">User ID is required</div> 
+        
+  </div> 
+        </div>
+
+  <br>
+  <div class="form-group clearfix mt-n3 mb-4" [ngClass]="{ 'has-error':f.password.touched || f.password.errors }">  
+   <!-- <label for="pass">Password</label> -->
+      <input
+       id="pass"
+       type="password"
+       formControlName="password"
+       class="form-control"
+       placeholder="Password"
+       required>
+       <div  *ngIf="((f.password.touched || f.password.dirty) &&
+       f.password.errors)">
+        <div class="msg" *ngIf="f.password.errors.required">Password is required</div>    
+       </div>
+      </div>
+  
+      </div>
+  
+      <button
+       class="btn btn-lg btn-primary btn-block"
+       type="submit"
+       value="Login" >
+        Sign In
+      </button>
+      <br>
+
+      <p *ngIf="message" class="text-center error msg"><strong>{{message}}</strong></p>
+  
+  
+    </form>
+  </div>
+  </div>
+  

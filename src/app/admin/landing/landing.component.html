@@ -1,0 +1,65 @@
+
+
+<nav class="navbar navbar-expand-md bg-dark navbar-dark mt-n3">
+  <a class="navbar-brand mt-2" href="#">Hi, Welcome </a>
+    <ul class="navbar-nav mt-2 mr-auto col col-12 col-sm-6 col-md-6 col-lg-6">
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/home">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/contact-create"(click)="forms()">Apply</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="javascript:void(0);" (click)="logout()">Logout</a>
+      </li>
+     </ul>
+    
+  <strong class="avname  ">{{id}}</strong>
+ 
+  <img src="https://image.flaticon.com/icons/png/512/219/219970.png" alt="Avatar" class="avatar">
+</nav>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-4"
+     *ngFor="let image of data | sortBy:'desc':'title'">
+     <div class="card border-info mt-4 md-4 overflow-auto square scrollbar-dusty-grass square thin" style="height: 360px;">
+        <div class="inner">
+        <img class="card-img-top" src={{image.field_image}} alt="Card image cap">
+      </div>
+     
+      <div class="card-body">
+        <h3 class="card-title">{{image.title}}</h3>
+        <p class="card-text">{{image.field_summery | slice:3:73}}</p>
+      </div>
+    
+      </div>
+    </div>
+   
+  </div>
+
+<!--   
+<div class="card-columns voyage ">
+  
+  <div class="card border-info mt-4 md-4 overflow-auto square scrollbar-dusty-grass square thin" style="height: 360px;" 
+    *ngFor="let image of data | sortBy:'desc':'title'">
+         
+    <div class="inner">
+        <img class="card-img-top" src={{image.field_image}} alt="Card image cap">
+      </div>
+     
+      <div class="card-body">
+        <h3 class="card-title">{{image.title}}</h3>
+        <p class="card-text">{{image.field_summery | slice:3:73}}{{ image.field_summery.length > 70 ? '...' : ''}}</p>
+        <p class="card-text overflow-scroll">{{image.field_voyages}}</p>
+      </div>
+    </div>
+</div> -->
+</div>
+
+
+<footer class=" text-center align-middle mt-4 " >
+  <p>© 2020 My Landing Page All Rights Reserved</p>
+</footer>

@@ -1,0 +1,301 @@
+
+ <div class="bg">
+  <div class="container mt-2">
+
+    <br>
+
+      <div class="entry" >
+        <p>Fields marked with a * is required</p>
+      </div>
+
+    <form [formGroup]="formtwo" (ngSubmit)="onSubmit()">
+
+      <div class="row">
+        <div  class="col col-12 col-sm-6 col-md-6 col-lg-6 mb-auto" >
+          <div class="form-group"
+          [ngClass]="{'has-error': ((formtwo.get('fname').touched ||
+          formtwo.get('fname').dirty) &&
+          formtwo.get('fname').errors)}">
+        <label  for="fname">First Name<em>*</em></label><br>
+
+        <input id="fname" autofocus type="text" class="form-control" placeholder="First Name" formControlName="fname">
+        <span class="help-block"
+              *ngIf="((formtwo.get('fname').touched || formtwo.get('fname').dirty) &&
+              formtwo.get('fname').errors)">
+          <span *ngIf="formtwo.get('fname').errors.required">
+            First Name is required
+          </span>
+          <span *ngIf="formtwo.get('fname').errors.pattern">
+            Invalid Character
+             </span> <br>
+          <span *ngIf="formtwo.get('fname').errors.minlength ||
+          formtwo.get('fname').errors.maxlength">
+              First Name must be greater than 2 characters and less than 30 characters
+          </span>
+          
+        </span>
+    </div>
+    </div>
+
+    <div  class="col col-12 col-sm-6 col-md-6 col-lg-6 mb-auto" >
+          <div class="form-group"
+          [ngClass]="{'has-error': ((formtwo.get('lname').touched ||
+          formtwo.get('lname').dirty) &&
+          formtwo.get('lname').errors)}">
+        <label  for="lname">Last Name<em>*</em></label><br>
+
+        <input id="lname" type="text" class="form-control" placeholder="Last Name" formControlName="lname">
+        <span class="help-block"
+              *ngIf="((formtwo.get('lname').touched || formtwo.get('lname').dirty) &&
+              formtwo.get('lname').errors)">
+          <span *ngIf="formtwo.get('lname').errors.required">
+            Last Name is required
+          </span>
+          <span *ngIf="formtwo.get('lname').errors.pattern">
+            Invalid Character
+             </span><br>
+          <span *ngIf="formtwo.get('lname').errors.minlength ||
+          formtwo.get('lname').errors.maxlength">
+          Last Name must be minimum 1 character and less than 60 characters
+          </span>
+          
+        </span>
+    </div>
+        </div>
+      </div>
+
+
+
+      <!-- select inputs -->
+      <div class="row">
+        <div  class="col col-12 col-sm-6 col-md-6 col-lg-6 mb-auto" >
+        <div class="form-group dropdown"
+        [ngClass]="{'has-error': ((formtwo.get('country').touched ||
+        formtwo.get('country').dirty) &&
+        formtwo.get('country').errors)}">
+        
+        <label for="country">Country/Region of Residence</label><em>*</em><br>
+        <select formControlName="country"  id="country" (change)="onCountryChange()"
+
+        class="form-control ">
+            
+              <!-- <option value="Canada">Canada</option>
+              <option value="India">India</option>
+              <option value="China">China</option>
+              <option value="USA">USA</option> -->
+              <!-- <option value="Brazil" >Brazil</option> -->
+              <option value="">Select Country/Region of Residence</option> 
+              <option value="{{countrydata.code}}" *ngFor="let countrydata of countrydata" >{{countrydata.name}}({{countrydata.code}})</option>
+        </select>
+        <span class="help-block"
+            *ngIf="((formtwo.get('country').touched || formtwo.get('country').dirty) &&
+            formtwo.get('country').errors)">
+        <span *ngIf="formtwo.get('country').errors.required">
+          Country/Region of Residence is required
+        </span>
+      </span>
+        </div>
+      </div>
+
+      <div  class="col col-12 col-sm-6 col-md-6 col-lg-6 mb-auto" >
+        <div class="form-group"
+        [ngClass]="{'has-error': ((formtwo.get('post').touched ||
+        formtwo.get('post').dirty) &&
+        formtwo.get('post').errors)}">
+      <label class="req" for="post">ZIP/Postal Code (Required for USA/Canada)<span id="zip">*</span></label><br>
+
+      <input id="post" type="post" class="form-control" placeholder="ZIP/Postal Code" formControlName="post">
+      <!-- <span> Required : {{formtwo.get('post').hasError('required')}}</span> -->
+      <span class="help-block"
+            *ngIf="((formtwo.get('post').touched || formtwo.get('post').dirty) &&
+            formtwo.get('post').errors)">
+        <span *ngIf="formtwo.get('post').errors.required">
+          ZIP/Postal Code is required
+        </span>
+        <span *ngIf="formtwo.get('post').errors.pattern">
+          Invalid ZIP 
+           </span>
+      </span>
+        </div>
+    </div>
+
+        </div>
+      <br>
+      <!-- radio input in angular forms -->
+
+      <label class="control-label">
+        Preferred Contact Method For The Quote<em>*</em></label>
+
+
+
+      <div class="radio-inline mb-auto">
+      <label for="contactPreference" class="radio-inline">
+        <input
+        (change)="onBclick()"
+        value="Email"
+        required
+        formControlName="contactPreference"
+        type="radio"
+        name="contactPreference">
+        Email
+       </label>
+
+       <label for="contactPreference" class="radio-inline">
+       <input
+       (change)="onBclick()"
+        formControlName="contactPreference"
+        type="radio"
+        required
+        name="contactPreference"
+        value="Phone">
+        Phone
+       </label>
+
+       <label for="contactPreference" class="radio-inline">
+       <input
+       (change)="onBclick()"
+        value="No Preference"
+        required
+        formControlName="contactPreference"
+        type="radio"
+        name="contactPreference">
+        No Preference
+       </label>
+      </div>
+
+      <br>
+      <div class="row">
+        <div  class="col col-12 col-sm-6 col-md-6 col-lg-6 mb-auto" >
+          <div class="form-group"
+          [ngClass]="{'has-error': ((formtwo.get('mail').touched ||
+          formtwo.get('mail').dirty) &&
+          formtwo.get('mail').errors)}">
+        <label  for="mail">Email ID<em>*</em> </label><br>
+
+        <input id="mail"  type="email" placeholder="Email ID" class="form-control" formControlName="mail">
+        <span class="help-block"
+              *ngIf="((formtwo.get('mail').touched || formtwo.get('mail').dirty) &&
+              formtwo.get('mail').errors)">
+          <span *ngIf="formtwo.get('mail').errors.required">
+            Email is required
+          </span>
+          <span *ngIf="formtwo.get('mail').errors.maxlength">
+         Maximum 60 characters
+          </span>
+          <span *ngIf="formtwo.get('mail').errors.email">
+            Must be a valid email address
+          </span>
+        </span>
+          </div>
+      </div>
+
+      <div  class="col col-12 col-sm-6 col-md-6 col-lg-6 mb-auto" >
+        <div class="form-group"
+        [ngClass]="{'has-error': ((formtwo.get('num').touched ||
+        formtwo.get('num').dirty) &&
+        formtwo.get('num').errors)}">
+        <div class="phn">
+          <label class="req" for="num">Phone<span id="ph">*</span> </label>
+
+        </div>
+      
+
+      <input id="num" type="num" class="form-control" placeholder="Phone Number" formControlName="num">
+      <span class="help-block"
+            *ngIf="((formtwo.get('num').touched || formtwo.get('num').dirty) &&
+            formtwo.get('num').errors)">
+        <span *ngIf="formtwo.get('num').errors.required">
+          Phone Number is required
+        </span>
+        <span *ngIf="formtwo.get('num').errors.pattern">
+         Invalid Input
+          </span>
+      </span>
+        </div>
+    </div>
+      </div>
+
+
+
+
+
+
+  <!-- checkbox input  -->
+
+  <div class="form-group form-check">
+    <input
+     type="checkbox"
+     class="form-check-input"
+     formControlName="exampleCheck1"
+     id="exampleCheck1">
+
+    <label class="form-check-label" for="exampleCheck1">
+      <i>I agree to receive email marketing from The Company.</i>
+    </label>
+  </div>
+
+  <div class="form-group form-check">
+    <input
+    type="checkbox"
+    formControlName="exampleCheck2"
+    class="form-check-input"
+    id="exampleCheck2">
+    <label class="form-check-label"
+     for="exampleCheck2"><i>I agree to be contacted by phone by representatives from The Company.</i>
+    </label>
+  </div>
+
+
+   <div class="par"><p>
+     <i>By clicking the “Submit” button below, I represent that: (1) I am 18+ years of age; and (2) I have read and agreed to the <span id="blue">Terms and Conditions</span> and <span id="blue">Privacy Policy</span>. By entering information on this form, you acknowledge that you are providing it to The Company, L.L.C. and Cruise Yacht OpCo Limited d/b/a The Company which uses The Company marks under license from The Company, L.L.C</i></p>
+  </div>
+
+  <div class="btn-toolbar text-center well">
+
+    <button type="submit" (click) = "showSuccess()" class="btn btn-primary mb-3" [disabled]="!formtwo .valid">
+      Submit
+    </button>
+
+    <!-- <button class="btn btn-success m-1" (click)="alertService.success('Success!!', options)">Success</button> -->
+
+    <button
+      type="reset"
+       class="btn btn-primary mb-3">
+       CLEAR
+    </button>
+  </div>
+
+</form>
+<br>
+
+<table class="design">
+  <tr>
+    <th style="padding: 10px">Your Details</th>
+    <!-- <th style="padding: 10px">FormControl (fullName)</th> -->
+  </tr>
+  <tr>
+    <td style="padding: 10px">
+    <br/> First Name  : {{formtwo.get('fname').value}}
+    <br/> Last Name  : {{formtwo.get('lname').value}}
+    <br/> Country   : {{formtwo.get('country').value}}
+    <br/> ZIP Code  : {{formtwo.get('post').value}}
+    <br/> Contact Preference  : {{formtwo.get('contactPreference').value}}
+    <br/> Email : {{formtwo.get('mail').value}}
+    <br/> Phone : {{formtwo.get('num').value}}
+
+
+
+
+    </td>
+    <!-- <td style="padding: 10px"> -->
+      <!-- touched : {{ formtwo.get('fname').touched }}
+      <br/> dirty : {{ formtwo.get('fname').dirty }}
+      <br/> valid : {{ formtwo.get('fullName').valid }} -->
+      <!-- <br/> First Name  : {{formtwo.get('fname').value}} -->
+    <!-- </td> -->
+  </tr>
+</table>
+  </div>
+</div>
+
+

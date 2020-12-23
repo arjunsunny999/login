@@ -1,0 +1,86 @@
+.btn-toolbar .btn{
+  margin-right: 15px;
+}
+.btn-toolbar .btn:last-child{
+  margin-right: 0;
+}
+
+.entry{
+  color: rgb(240, 9, 9);
+
+}
+
+.par{
+
+  text-align: center;
+  text-align: justify;
+  text-justify: inter-word;
+}
+input[type="radio"]{
+  margin: 0 10px 0 10px;
+}
+span { color: red; }
+em{color: red;}
+
+.btn{
+  padding: 5px 50px;
+  border: 0 none;
+  font-size: 15px;
+  border-radius: 0%;
+  background-color: grey;
+  color:white;
+  font-weight: 100;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+body {padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.form-control.ng-touched.ng-invalid{
+
+  border: 2px solid red;
+}
+
+
+.bg{
+  display: flex;
+  flex-direction: column;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-image: url(https://wallpapercave.com/wp/9DUWNZk.jpg);
+  background-repeat: repeat;
+}
+
+
+.design{
+
+  border-top: 1rem;
+  width: 80%;
+}
+
+#ph {
+  display: none;
+  
+}
+
+#zip{
+
+  display: none;
+} 
+
+ .req
+{
+  display:inline-flex !important; 
+} 
+
+#blue{
+  color:#00a1ff;
+}
